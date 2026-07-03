@@ -15,8 +15,10 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+    it('should return the home message', () => {
+      expect(appController.getHome()).toEqual({
+        message: 'Welcome to Gym Management API',
+      });
     });
   });
 });

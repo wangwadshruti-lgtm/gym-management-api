@@ -1,12 +1,9 @@
 import { Injectable } from '@nestjs/common';
+import { CreateGymDto } from './dto/create-gym.dto';
 
 @Injectable()
 export class GymService {
-  private gyms: {
-    id: number;
-    name: string;
-    location: string;
-  }[] = [
+  private gyms = [
     {
       id: 1,
       name: 'Gold Gym',
@@ -27,11 +24,10 @@ export class GymService {
     return this.gyms.find((gym) => gym.id === id);
   }
 
-  addGym(gym: { name: string; location: string }) {
+  addGym(createGymDto: CreateGymDto) {
     const newGym = {
       id: this.gyms.length + 1,
-      name: gym.name,
-      location: gym.location,
+      ...createGymDto,
     };
 
     this.gyms.push(newGym);
